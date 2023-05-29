@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:model="clr-namespace:MobileAppDev1.Models"
+             x:Class="MobileAppDev1.Views.TermDetailsPage" 
+             Title="Term Details">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Home" Text="Home" Clicked="Home_Clicked" Order="Secondary"/>
+        <ToolbarItem x:Name="Profile" Text="Profile" Clicked="Profile_Clicked" Order="Secondary"/>
+        <ToolbarItem x:Name="Preferences" Text="Preferences" Clicked="Preferences_Clicked" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label x:Name="PageTitle" Text="Details:" FontSize="Large" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Grid BackgroundColor ="WhiteSmoke"
+                Padding="10"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                ColumnDefinitions="*,*"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                    <Label Text="Term ID:" FontSize="Small" Grid.Column="0" Grid.Row="0"/>
+                    <Entry x:Name="termID" Placeholder="{Binding TermID}" FontSize="Medium" Grid.Column="0" Grid.Row="1" IsEnabled="False"/>
+                    
+                    <Label Text="Term Name:" FontSize="Small" Grid.Column="1" Grid.Row="0"/>
+                    <Entry x:Name="termEntry"  Placeholder="{Binding TermName}" FontSize="Medium"  Grid.Column="1" Grid.Row="1" IsEnabled="False"/>
+                    
+                    <Label Text="Start Date:" FontSize="Small" Grid.Row="2"/>
+                    <DatePicker x:Name="dateStartEntry" FontSize="Medium" Grid.Column="0"  Grid.Row="3" Grid.ColumnSpan="2" IsEnabled="False"/>
+                    
+                    <Label Text="End Date:" FontSize="Small" Grid.Row="4"/>
+                    <DatePicker x:Name="dateEndEntry" FontSize="20" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" IsEnabled="False"/>
+                </Grid>
+                <Label Text="Courses:" FontSize="Small" HorizontalTextAlignment="Center"/>
+                <CollectionView x:Name="CourseListView"
+                            SelectionChanged="CourseListView_SelectionChanged"
+                            EmptyView="No Courses to Display"
+                            SelectionMode="Single"
+                            HeightRequest="300">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Course">
+                            <Frame 
+                                x:Name="CollectionViewFrame"
+                                BorderColor ="Silver"
+                                BackgroundColor="WhiteSmoke"
+                                HasShadow="True" 
+                                HorizontalOptions="FillAndExpand"
+                                Padding="5,5,5,5"
+                                CornerRadius="20">
+                                <Grid 
+                                    BackgroundColor ="WhiteSmoke"
+                                    Padding="10"
+                                    ColumnDefinitions="*"
+                                    RowDefinitions="Auto">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="7">
+                                        <Label x:Name="courseName" Text="{Binding CourseName}" FontSize="15"/>
+                                        <Label Text=":" FontSize="15"/>
+                                        <Label x:Name="courseStart" Text="{Binding CourseStart, StringFormat='{0:MM/dd/yyyy}'}" FontSize="15"/>
+                                        <Label Text="-" FontSize="15"/>
+                                        <Label x:Name="courseEnd" Text="{Binding CourseEnd, StringFormat='{0:MM/dd/yyyy}'}" FontSize="15"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button x:Name="AddButton" Text="Add Course" TextColor="White" BackgroundColor="Gray" CornerRadius="50" Grid.ColumnSpan="1" Grid.Row="1" Clicked="AddButton_Clicked"/>
+                <Grid ColumnDefinitions="*,*,*"
+                      RowDefinitions="Auto">
+                    <Button x:Name="EditButton" Text="Edit Term" TextColor="White" CornerRadius="50" Grid.Column="0" Clicked="EditButton_Clicked"/>
+                    <Button x:Name="SaveButton" Text="Save" TextColor="White" CornerRadius="50" Grid.Column="0" IsVisible="False" IsEnabled="False" Clicked="SaveButton_Clicked"/>
+                    <Button x:Name="DeleteButton" Text="Delete Term" TextColor="White" BackgroundColor="Red" CornerRadius="50" Grid.Column="1" Clicked="DeleteButton_Clicked"/>
+                    <Button x:Name="Done" Text="Done" TextColor="White" CornerRadius="50" Grid.Column="2" Clicked="Done_Clicked"/>
+                    <Button x:Name="CancelButton" Text="Cancel" TextColor="White" CornerRadius="50" Grid.Column="2" IsVisible="False" IsEnabled="False" Clicked="CancelButton_Clicked"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:model="clr-namespace:MobileAppDev1.Models"
+             x:Class="MobileAppDev1.Views.TermListPage"
+             x:Name="TermsList"
+             Title="Terms List">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Home" Text="Home" Clicked="Home_Clicked" Order="Secondary"/>
+        <ToolbarItem x:Name="Profile" Text="Profile" Clicked="Profile_Clicked" Order="Secondary"/>
+        <ToolbarItem x:Name="Preferences" Text="Preferences" Clicked="Preferences_Clicked" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="PageTitle" Text="Degree Plan:" FontSize="Title" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" FontAttributes="Bold"/>
+            <CollectionView 
+                x:Name="TermListView"
+                BackgroundColor="White"
+                SelectionMode="Single"
+                SelectionChanged="TermListView_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Term">
+                        <Frame 
+                        x:Name="CollectionViewFrame"
+                        BorderColor ="Silver"
+                        BackgroundColor="WhiteSmoke"
+                        HasShadow="True" 
+                        HorizontalOptions="FillAndExpand"
+                        Padding="5,5,5,5"
+                        CornerRadius="20">
+                            <Grid 
+                            BackgroundColor ="Transparent"
+                            Padding="5"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center"
+                            ColumnDefinitions="Auto"
+                            RowDefinitions="Auto">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="7">
+                                    <Label x:Name="termID" Text="{Binding TermID}" FontSize="15"/>
+                                    <Label x:Name="Name" Text="{Binding TermName}" FontSize="15"/>
+                                    <Label Text=":" FontSize="15"/>
+                                    <Label x:Name="Start" Text="{Binding TermStart, StringFormat='{0:MM/dd/yyyy}'}" FontSize="15"/>
+                                    <Label Text="-" FontSize="15"/>
+                                    <Label x:Name="End" Text="{Binding TermEnd, StringFormat='{0:MM/dd/yyyy}'}" FontSize="15"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <CollectionView.Footer>
+                    <Frame 
+                    BorderColor="Transparent"
+                    BackgroundColor="Transparent"
+                    HasShadow="False" 
+                    HorizontalOptions="FillAndExpand" 
+                    Padding="5,5,5,5">
+                        <Button 
+                        x:Name="AddTerm"
+                        Text="Add New Term"
+                        TextColor="White"
+                        CornerRadius="50"
+                        Clicked="AddTerm_Clicked"/>
+                    </Frame>
+                </CollectionView.Footer>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

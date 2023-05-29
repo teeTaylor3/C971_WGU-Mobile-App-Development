@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileAppDev1.Views.AssessmentDetail"
+             Title="Assessment Details">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Home" Text="Home" Clicked="Home_Clicked" Order="Secondary"/>
+        <ToolbarItem x:Name="Profile" Text="Profile" Clicked="Profile_Clicked" Order="Secondary"/>
+        <ToolbarItem x:Name="Preferences" Text="Preferences" Clicked="Preferences_Clicked" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label x:Name="PageTitle" FontSize="Large" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Grid BackgroundColor ="WhiteSmoke"
+                Padding="10"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                ColumnDefinitions="*,*"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                    <Label Text="Assessment ID:" FontSize="Small" Grid.Column="0" Grid.Row="0"/>
+                    <Entry x:Name="assessmentID" FontSize="20" Grid.Column="0" Grid.Row="1" IsEnabled="False"/>
+
+                    <Label Text="Course ID:" FontSize="Small" Grid.Column="1" Grid.Row="0"/>
+                    <Entry x:Name="courseID" FontSize="Medium" Grid.Column="1" Grid.Row="1" IsEnabled="False"/>
+
+                    <Label Text="Assessment Name:" FontSize="Small" Grid.Column="0" Grid.Row="2"/>
+                    <Entry x:Name="assessmentEntry" FontSize="Medium"  Grid.Column="1" Grid.Row="2" IsEnabled="False"/>
+
+                    <Label Text="Start Date:" FontSize="Small" Grid.Row="3"/>
+                    <DatePicker x:Name="dateStartEntry" FontSize="Medium" Grid.Column="0"  Grid.Row="4" Grid.ColumnSpan="2" IsEnabled="False"/>
+
+                    <Label Text="End Date:" FontSize="Small" Grid.Row="5"/>
+                    <DatePicker x:Name="dateEndEntry" FontSize="Medium" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" IsEnabled="False"/>
+
+                    <Label Text="Assessment Type:" FontSize="Small" Grid.Column="0" Grid.Row="7" VerticalOptions="Center"/>
+                    <Picker x:Name="assessmentType" FontSize="Medium" Grid.Column="1" Grid.Row="7" IsEnabled="False">
+                        <Picker.Items>
+                            <x:String>Performance</x:String>
+                            <x:String>Objective</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label Text="Notifications?" FontSize="Small" Grid.Column="0" Grid.Row="8" VerticalOptions="Center"/>
+                    <Switch x:Name="notifications" Grid.Column="1" Grid.Row="8" IsEnabled="False"/>
+                </Grid>
+                <Grid ColumnDefinitions="*,*,*"
+                      RowDefinitions="Auto">
+                    <Button x:Name="EditButton" Text="Edit Assessment" FontSize="Micro" TextColor="White" CornerRadius="50" Grid.Column="0" Clicked="EditButton_Clicked"/>
+                    <Button x:Name="SaveButton" Text="Save" TextColor="White" CornerRadius="50" Grid.Column="0" IsVisible="False" IsEnabled="False" Clicked="SaveButton_Clicked"/>
+                    <Button x:Name="DeleteButton" Text="Delete Assessment" FontSize="Micro" TextColor="White" BackgroundColor="Red" CornerRadius="50" Grid.Column="1" Clicked="DeleteButton_Clicked"/>
+                    <Button x:Name="Done" Text="Done" TextColor="White" CornerRadius="50" Grid.Column="2" Clicked="Done_Clicked"/>
+                    <Button x:Name="CancelButton" Text="Cancel" TextColor="White" CornerRadius="50" Grid.Column="2" IsVisible="False" IsEnabled="False" Clicked="CancelButton_Clicked"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

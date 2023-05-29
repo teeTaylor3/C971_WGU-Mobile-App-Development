@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileAppDev1.Views.AddCoursePage"
+             Title="Add Course">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Home" Text="Home" Clicked="Home_Clicked" Order="Secondary"/>
+        <ToolbarItem x:Name="Profile" Text="Profile" Clicked="Profile_Clicked" Order="Secondary"/>
+        <ToolbarItem x:Name="Preferences" Text="Preferences" Clicked="Preferences_Clicked" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label x:Name="PageTitle" Text="New Course" FontSize="Large" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Grid BackgroundColor ="WhiteSmoke"
+                Padding="10"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                ColumnDefinitions="*,*"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                    <Label Text="Term ID:" FontSize="Small" Grid.Column="0" Grid.Row="0"/>
+                    <Entry x:Name="termIDEntry" FontSize="Medium" Grid.Column="0" Grid.Row="1" IsEnabled="False"/>
+
+                    <Label Text="Course Name:" FontSize="Small" Grid.Column="0" Grid.Row="2"/>
+                    <Entry x:Name="courseNameEntry"  Placeholder="Name" FontSize="Medium"  Grid.Column="0" Grid.Row="3"/>
+
+                    <Label Text="Start Date:" FontSize="Small" Grid.Row="4"/>
+                    <DatePicker x:Name="dateStartEntry" FontSize="Medium" Grid.Column="0"  Grid.Row="5" Grid.ColumnSpan="2"/>
+
+                    <Label Text="End Date:" FontSize="Small" Grid.Row="6"/>
+                    <DatePicker x:Name="dateEndEntry" FontSize="Medium" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2"/>
+
+                    <Label Text="Status:" FontSize="Small" Grid.Column="0" Grid.Row="8" VerticalOptions="Center"/>
+                    <Picker x:Name="courseStatus" Grid.Column="1" Grid.Row="8">
+                        <Picker.Items>
+                            <x:String>In Progress</x:String>
+                            <x:String>Completed</x:String>
+                            <x:String>Dropped</x:String>
+                            <x:String>Upcoming</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label Text="Course Notes:" FontSize="Small" Grid.Column="0" Grid.Row="9"/>
+                    <Entry x:Name="courseNotesEntry"  Placeholder="Type Notes" FontSize="Medium"  Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="2"/>
+
+                    <Label Text="Notifications Enabled:" FontSize="Small" Grid.Column="0" Grid.Row="11" VerticalOptions="Center"/>
+                    <Switch x:Name="notifications"  IsToggled="True"  Grid.Column="1" Grid.Row="11"/>
+
+                    <Label Text="Instructor Name:" FontSize="Small" Grid.Column="0" Grid.Row="12"/>
+                    <Entry x:Name="courseINEntry"  Placeholder="Instructor Name" FontSize="Medium"  Grid.Column="0" Grid.Row="13" Grid.ColumnSpan="2"/>
+
+                    <Label Text="Course Instructor Phone Number:" FontSize="Small" Grid.Column="0" Grid.Row="14" Grid.ColumnSpan="2"/>
+                    <Entry x:Name="courseIPNEntry"  Placeholder="Instructor Phone Number" FontSize="Medium"  Grid.Column="0" Grid.Row="15" Grid.ColumnSpan="2"/>
+
+                    <Label Text="Course Instructor Email:" FontSize="Small" Grid.Column="0" Grid.Row="16" Grid.ColumnSpan="2"/>
+                    <Entry x:Name="courseIEEntry"  Placeholder="Instructor Email" FontSize="Medium"  Grid.Column="0" Grid.Row="17" Grid.ColumnSpan="2"/>
+                </Grid>
+                <Grid ColumnDefinitions="*,*"
+                      RowDefinitions="Auto">
+                    <Button x:Name="SaveButton" Text="Save" TextColor="White" BackgroundColor="Green" CornerRadius="50" Grid.Column="0" Clicked="SaveButton_Clicked"/>
+                    <Button x:Name="CancelButton" Text="Cancel" TextColor="White" BackgroundColor="Red" CornerRadius="50" Grid.Column="1" Clicked="CancelButton_Clicked"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
